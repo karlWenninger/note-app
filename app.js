@@ -5,7 +5,7 @@ function Note(noteId, noteDate, noteText) {
     this.noteText = noteText;
 };
 
-// BUILD UI
+// build UI
 function makeNoteUI(noteId, noteDate, noteText) {
     // contains toolbar elements
     const toolbar = document.createElement('div');
@@ -32,7 +32,6 @@ function makeNoteUI(noteId, noteDate, noteText) {
     note.id = noteId;
     note.innerText = noteText;
 
-
     // contains toolbar elements and note
     const noteContainer = document.createElement('div');
     noteContainer.appendChild(toolbar);
@@ -43,12 +42,11 @@ function makeNoteUI(noteId, noteDate, noteText) {
     prependNode.prepend(noteContainer);
 };
 
-
 const defaultText = 'click to enter note, click off to save';
 
 // click, create id and date, new Note constr, push to noteArr, localStorage
-const getNoteBtn = document.querySelector('#get-note-btn');
-getNoteBtn.addEventListener('click', (e) => {
+const makeNoteBtn = document.querySelector('#make-note-btn');
+makeNoteBtn.addEventListener('click', (e) => {
     const noteId = Date.now();
     const noteDate = Date().slice(0, Date().indexOf('GMT') - 4);
 
@@ -83,7 +81,6 @@ allNotesContainer.addEventListener('click', (e) => {
             for (let i of noteArr) {
                 if (i.noteId == activeNote.id) {
                     i.noteText = activeNote.innerText;
-
                     localStorage.setItem('noteArr', JSON.stringify(noteArr))
                 };
             };
